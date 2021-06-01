@@ -1,12 +1,11 @@
 #include <Servo.h>
 Servo myservo;
 int buttstate;
-int buttonpin = 4, relaypin = 7;
+int buttonpin = 4;
 
 void setup()
 {
 	myservo.attach(6);
- 	digitalWrite(relaypin, HIGH);
   	pinMode(buttonpin, INPUT_PULLUP);
 }
 
