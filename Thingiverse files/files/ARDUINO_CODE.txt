@@ -1,37 +1,22 @@
-#include <VarSpeedServo.h>  /* Includes library. Download free library here: https://github.com/netlabtoolkit/VarSpeedServo */
-VarSpeedServo myservo;    // create servo object to control a servo 
-int in1 = 6; //relay shutter camera
-int in2 = 7; //relay servo)
+#include <Servo.h>
+Servo myservo;
+int buttstate;
+int buttonpin = 4, relaypin = 7;
 
-
-
-void setup() {
-  
-  myservo.attach(9);  // attaches the servo on pin 9 to the servo object
-  pinMode(in1, OUTPUT);
-  digitalWrite(in1, HIGH);
-  pinMode(in2, OUTPUT);
-  digitalWrite(in2, HIGH);
-  
+void setup()
+{
+	myservo.attach(6);
+ 	digitalWrite(relaypin, HIGH);
+  	pinMode(buttonpin, INPUT_PULLUP);
 }
 
+void loop()
+{
+ 	buttstate = digitalRead(buttonpin);
 
-void loop() {
-  
-  // 
-  myservo.write(120, 0);     // The Number 120 on the left can be changed to vary speed of the servo.     
-                                       
-digitalWrite(in2, LOW);
-  delay(2000);
-  digitalWrite(in2, HIGH);
-  delay(2000);
-  digitalWrite(in1, LOW);
-  delay (700);
-  digitalWrite(in1, HIGH);
-  delay (3000);
-  digitalWrite(in2, LOW);
+  if(buttstate == LOW){
+    myservo.write(255);
+    delay(2000);
+    myservo.write(0);
+  }
 }
-
-
-
-
