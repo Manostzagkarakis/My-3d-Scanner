@@ -6,7 +6,7 @@ int buttonpin = 4;
 void setup()
 {
 	myservo.attach(6);
-  	pinMode(buttonpin, INPUT_PULLUP);
+  	pinMode(buttonpin, INPUT_PULLUP); //Φασουλοκόλπα
 }
 
 void loop()
